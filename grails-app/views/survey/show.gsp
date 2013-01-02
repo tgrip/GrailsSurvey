@@ -85,12 +85,12 @@
 					
 				</li>
 				</g:if>
-
+                <g:set var="surveyId" value="${surveyInstance?.id}"/>
                 <fieldset name="questions">
                     <g:render template="/question/list" model="[questionInstanceList: surveyInstance.questions]"/>
                     <div class="nav" role="navigation">
                         <ul>
-                            <li><g:link class="create" controller="question" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                            <li><g:link class="create" controller="question" action="create" params="[surveyId: surveyId]">Add question</g:link></li>
                         </ul>
                     </div>
                 </fieldset>
@@ -98,7 +98,7 @@
 			</ol>
 			<g:form>
 				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${surveyInstance?.id}" />
+					<g:hiddenField name="id" value="${surveyId}" />
 					<g:link class="edit" action="edit" id="${surveyInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>

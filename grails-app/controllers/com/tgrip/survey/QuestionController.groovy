@@ -6,8 +6,8 @@ class QuestionController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def create() {
-        [questionInstance: new Question(params)]
+    def create(Long surveyId) {
+        [questionInstance: new Question(params), surveyId: surveyId]
     }
 
     def save() {
