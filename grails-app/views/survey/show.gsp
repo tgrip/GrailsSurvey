@@ -85,6 +85,15 @@
 					
 				</li>
 				</g:if>
+
+                <fieldset name="questions">
+                    <g:render template="/question/list" model="[questionInstanceList: surveyInstance.questions]"/>
+                    <div class="nav" role="navigation">
+                        <ul>
+                            <li><g:link class="create" controller="question" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+                        </ul>
+                    </div>
+                </fieldset>
 			
 			</ol>
 			<g:form>

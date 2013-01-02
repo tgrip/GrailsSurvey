@@ -9,6 +9,8 @@ class Survey {
     Date publicationDate
     Date expirationDate
 
+    static hasMany = [questions: Question]
+
     static constraints = {
         name()
         description()
