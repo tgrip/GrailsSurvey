@@ -10,6 +10,6 @@ class ParticipateSurveyController {
     }
 
     def viewDetail(Long id) {
-
+        [survey: Survey.get(id)]
     }
 }
