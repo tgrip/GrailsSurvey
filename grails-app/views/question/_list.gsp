@@ -13,7 +13,7 @@
 					
 						<g:sortableColumn property="answerRequired" title="${message(code: 'question.answerRequired.label', default: 'Answer Required')}" />
 					
-						%{--<th><g:message code="question.survey.label" default="Survey" /></th>--}%
+						<th>Order</th>
 					
 					</tr>
 				</thead>
@@ -21,13 +21,13 @@
 				<g:each in="${questionInstanceList}" status="i" var="questionInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${questionInstance.id}">${fieldValue(bean: questionInstance, field: "name")}</g:link></td>
+						<td><g:link controller="question" action="show" id="${questionInstance.id}">${fieldValue(bean: questionInstance, field: "name")}</g:link></td>
 					
 						<td>${fieldValue(bean: questionInstance, field: "text")}</td>
 					
 						<td><g:formatBoolean boolean="${questionInstance.answerRequired}" /></td>
 					
-						%{--<td>${fieldValue(bean: questionInstance, field: "survey")}</td>--}%
+						<td>${fieldValue(bean: questionInstance, field: "surveyOrder")}</td>
 					
 					</tr>
 				</g:each>

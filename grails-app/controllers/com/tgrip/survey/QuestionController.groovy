@@ -3,6 +3,7 @@ package com.tgrip.survey
 import org.springframework.dao.DataIntegrityViolationException
 
 class QuestionController {
+    def questionService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -11,14 +12,14 @@ class QuestionController {
     }
 
     def save() {
-        def questionInstance = new Question(params)
-        if (!questionInstance.save(flush: true)) {
+        def questionInstance = questionService.saveQuestion(params)
+        if (!questionInstance.id) {
             render(view: "create", model: [questionInstance: questionInstance])
             return
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])
-        redirect(action: "show", id: questionInstance.id)
+        redirect(controller: 'survey', action: "show", id: questionInstance.survey.id)
     }
 
     def show(Long id) {

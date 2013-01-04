@@ -7,6 +7,7 @@ class QuestionService {
         def survey = Survey.get(params.surveyId)
         if (survey) {
             question.survey = survey
+            question.surveyOrder = survey.questions.size()
             survey.addToQuestions(question)
             question.save()
         }
