@@ -12,6 +12,8 @@
   <title></title>
 </head>
 <body>
-    ${survey}
+    ${survey.description}
+    <p/>
+    <g:link action="participate" id="${survey.id}">Participate</g:link>
 </body>
 </html>
