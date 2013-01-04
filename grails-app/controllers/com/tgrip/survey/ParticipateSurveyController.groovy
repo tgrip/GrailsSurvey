@@ -20,4 +20,8 @@ class ParticipateSurveyController {
     def answerQuestions(Long id) {
         [survey: Survey.get(id)]
     }
+
+    def saveResults() {
+        render params
+    }
 }

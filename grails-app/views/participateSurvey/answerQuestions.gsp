@@ -12,6 +12,13 @@
   <title></title>
 </head>
 <body>
-
+    <g:form action="saveResults">
+        <g:each in="${survey.questions.sort {it.surveyOrder}}" var="question">
+            <g:render template="/questionType/textQuestion" bean="${question}"/>
+            <br/>
+        </g:each>
+        <p/>
+        <g:submitButton name="save"/>
+    </g:form>
 </body>
 </html>
