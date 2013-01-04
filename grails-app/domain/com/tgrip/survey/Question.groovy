@@ -5,6 +5,7 @@ class Question {
     String text
     boolean answerRequired
     QuestionType type
+    int surveyOrder
 
     static belongsTo = [survey: Survey]
 
@@ -12,6 +13,7 @@ class Question {
         name()
         text()
         type()
+        surveyOrder()
         answerRequired()
     }
 }
