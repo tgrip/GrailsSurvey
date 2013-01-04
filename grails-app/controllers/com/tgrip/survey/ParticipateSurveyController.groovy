@@ -8,4 +8,8 @@ class ParticipateSurveyController {
     def showSurveys() {
         [surveys: surveyService.validSurveys()]
     }
+
+    def viewDetail(Long id) {
+
+    }
 }
