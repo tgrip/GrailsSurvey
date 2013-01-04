@@ -16,4 +16,8 @@ class ParticipateSurveyController {
     def participate(Long id) {
         [survey: Survey.get(id)]
     }
+
+    def answerQuestions(Long id) {
+        [survey: Survey.get(id)]
+    }
 }
