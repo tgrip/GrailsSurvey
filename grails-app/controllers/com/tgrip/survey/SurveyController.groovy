@@ -100,4 +100,12 @@ class SurveyController {
             redirect(action: "show", id: id)
         }
     }
+
+    def viewResults(Long id) {
+        def surveyInstance = Survey.get(id)
+        params.max = Math.min(params.max ?: 10, 100)
+        def questions = Response.findAllBySurvey(surveyInstance, params)
+        def count = Response.countBySurvey(surveyInstance)
+        [responseInstanceList: questions, responseInstanceTotal: count]
+    }
 }
