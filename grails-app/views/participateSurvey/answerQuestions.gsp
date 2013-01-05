@@ -13,6 +13,7 @@
 </head>
 <body>
     <g:form action="saveResults">
+        <g:hiddenField name="surveyId" value="${survey.id}"/>
         <g:each in="${survey.questions.sort {it.surveyOrder}}" var="question">
             <g:render template="/questionType/textQuestion" bean="${question}"/>
             <br/>

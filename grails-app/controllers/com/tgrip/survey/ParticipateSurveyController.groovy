@@ -4,6 +4,7 @@ class ParticipateSurveyController {
     static defaultAction = "showSurveys"
 
     def surveyService
+    def responseService
 
     def showSurveys() {
         [surveys: surveyService.validSurveys()]
@@ -22,6 +23,7 @@ class ParticipateSurveyController {
     }
 
     def saveResults() {
-        render params
+        responseService.saveResponses(params.q)
+        [survey: Survey.get(params.surveyId)]
     }
 }
