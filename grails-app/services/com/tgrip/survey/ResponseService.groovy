@@ -6,7 +6,6 @@ class ResponseService {
 
     void saveResponses(Map responses) {
         responses.each { questionId, userResponse ->
-            //see what to do when no user response
             if (questionId.isLong()) {
                 def question = Question.get(questionId)
                 if(question){
@@ -23,8 +22,8 @@ class ResponseService {
                 response = new TextResponse(textValue: userResponse)
                 break
             case QuestionType.Date:
-                def date = new LocalDate(userResponse._year, userResponse._month, userResponse._day)
-                response = new DateResponse(dateValue: date.toDate())
+                def dateString = "${userResponse._year}-${userResponse._month}-${userResponse._day}".toString()
+                response = new DateResponse(dateValue: new LocalDate(dateString).toDate())
                 break
         }
         response.survey = question.survey

@@ -43,7 +43,7 @@
 				</tbody>
 			</table>
 			<div class="pagination">
-				<g:paginate total="${responseInstanceTotal}" />
+				<g:paginate total="${responseInstanceTotal}" id="${surveyId}"/>
 			</div>
 		</div>
 	</body>
