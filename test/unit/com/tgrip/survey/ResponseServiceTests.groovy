@@ -18,7 +18,7 @@ class ResponseServiceTests {
         Question.build(type: QuestionType.FreeText)
         Question.build(type: QuestionType.Date)
 
-        def responses = [1: 'Alice', 2: 'Sat Jan 05 00:00:00 CST 2013']
+        def responses = ['1': 'Alice', '2._year':2013, '2':[_year:2013, _month:1, _day:6]]
         service.saveResponses(responses)
 
         assert 1 == DateResponse.count
