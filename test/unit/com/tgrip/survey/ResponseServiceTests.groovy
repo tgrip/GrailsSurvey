@@ -10,17 +10,19 @@ import grails.buildtestdata.mixin.Build
  * See the API for {@link grails.test.mixin.services.ServiceUnitTestMixin} for usage instructions
  */
 @TestFor(ResponseService)
-@Mock([Response, Question, TextResponse])
+@Mock([Response, Question, TextResponse, DateResponse])
 @Build(Question)
 class ResponseServiceTests {
 
     void testSaveResponses() {
-        2.times {
-            Question.build()
-        }
-        def responses = ['1': 'Alice', '2': 'Bob']
+        Question.build(type: QuestionType.FreeText)
+        Question.build(type: QuestionType.Date)
+
+        def responses = [1: 'Alice', 2: 'Sat Jan 05 00:00:00 CST 2013']
         service.saveResponses(responses)
 
+        assert 1 == DateResponse.count
+        assert 1 == TextResponse.count
         assert 2 == Response.count
     }
 }

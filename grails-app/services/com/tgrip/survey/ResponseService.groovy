@@ -7,7 +7,17 @@ class ResponseService {
             //see what to do when no user response
             def question = Question.get(questionId)
             if(question){
-                new TextResponse(value: userResponse, survey: question.survey).save()
+                def response
+                switch (question.type) {
+                    case QuestionType.FreeText:
+                        response = new TextResponse(textValue: userResponse)
+                        break
+                    case QuestionType.Date:
+                        response = new DateResponse(dateValue: Date.parseToStringDate(userResponse))
+                        break
+                }
+                response.survey = question.survey
+                response.save()
             }
         }
     }

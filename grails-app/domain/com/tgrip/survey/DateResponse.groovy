@@ -1,12 +1,12 @@
 package com.tgrip.survey
 
-class TextResponse extends Response {
-    String textValue
+class DateResponse extends Response {
+    Date dateValue
 
     static constraints = {
     }
 
     def getValue() {
-        textValue
+        dateValue
     }
 }
