@@ -15,7 +15,7 @@
     <g:form action="saveResults">
         <g:hiddenField name="surveyId" value="${survey.id}"/>
         <g:each in="${survey.questions.sort {it.surveyOrder}}" var="question">
-            <g:render template="/questionType/textQuestion" bean="${question}"/>
+            <g:render template="/questionType/question${question.type}" bean="${question}"/>
             <br/>
         </g:each>
         <p/>
