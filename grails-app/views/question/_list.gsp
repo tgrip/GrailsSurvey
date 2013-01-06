@@ -11,8 +11,10 @@
 					
 						<g:sortableColumn property="text" title="${message(code: 'question.text.label', default: 'Text')}" />
 					
-						<g:sortableColumn property="answerRequired" title="${message(code: 'question.answerRequired.label', default: 'Answer Required')}" />
-					
+						<g:sortableColumn property="type" title="Type" />
+
+                        <g:sortableColumn property="answerRequired" title="${message(code: 'question.answerRequired.label', default: 'Answer Required')}" />
+
 						<th>Order</th>
 					
 					</tr>
@@ -24,7 +26,8 @@
 						<td><g:link controller="question" action="show" id="${questionInstance.id}">${fieldValue(bean: questionInstance, field: "name")}</g:link></td>
 					
 						<td>${fieldValue(bean: questionInstance, field: "text")}</td>
-					
+						<td>${fieldValue(bean: questionInstance, field: "type")}</td>
+
 						<td><g:formatBoolean boolean="${questionInstance.answerRequired}" /></td>
 					
 						<td>${fieldValue(bean: questionInstance, field: "surveyOrder")}</td>

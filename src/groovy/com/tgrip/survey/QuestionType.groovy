@@ -8,5 +8,5 @@ package com.tgrip.survey
  * To change this template use File | Settings | File Templates.
  */
 enum QuestionType {
-    FreeText
+    FreeText, Date
 }
