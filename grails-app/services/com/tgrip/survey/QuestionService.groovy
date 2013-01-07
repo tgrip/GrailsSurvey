@@ -13,4 +13,10 @@ class QuestionService {
         }
         question
     }
+
+    void addChoice(ChoiceCommand command) {
+        def choice = new Choice(question: Question.get(command.questionId))
+        command.fillChoice(choice)
+        choice.save()
+    }
 }

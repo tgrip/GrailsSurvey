@@ -91,4 +91,20 @@ class QuestionController {
             redirect(action: "show", id: id)
         }
     }
+
+    def addChoice(ChoiceCommand command) {
+        questionService.addChoice(command)
+        redirect action: 'show', id: command.questionId
+    }
+}
+
+class ChoiceCommand {
+    Long questionId
+    String text
+    Integer value
+
+    void fillChoice(Choice choice) {
+        choice.text = text
+        choice.value = value
+    }
 }
