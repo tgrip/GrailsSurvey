@@ -25,6 +25,9 @@ class ResponseService {
                 def dateString = "${userResponse._year}-${userResponse._month}-${userResponse._day}".toString()
                 response = new DateResponse(dateValue: new LocalDate(dateString).toDate())
                 break
+            case QuestionType.YesNo:
+                response = new YesNoResponse(yesNoValue: userResponse)
+                break
         }
         response.survey = question.survey
         response.save()
