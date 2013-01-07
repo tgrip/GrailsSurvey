@@ -66,6 +66,10 @@
 					
 				</li>
 				</g:if>
+
+                <g:if test="${questionInstance.isChoice()}">
+                    <g:render template="/choice/list"/>
+                </g:if>
 			
 			</ol>
 			<g:form>

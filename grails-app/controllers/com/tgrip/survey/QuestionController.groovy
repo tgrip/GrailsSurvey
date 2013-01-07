@@ -29,8 +29,8 @@ class QuestionController {
             redirect(action: "list")
             return
         }
-
-        [questionInstance: questionInstance]
+        def choices = Choice.findAllByQuestion(questionInstance, [sort: 'id'])
+        [questionInstance: questionInstance, choiceInstanceList: choices]
     }
 
     def edit(Long id) {
