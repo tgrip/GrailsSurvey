@@ -16,4 +16,8 @@ class Question {
         surveyOrder()
         answerRequired()
     }
+
+    boolean isChoice() {
+        type == QuestionType.SingleChoice
+    }
 }
