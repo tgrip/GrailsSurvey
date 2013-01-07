@@ -1,3 +1,2 @@
 ${it.name}<br/>
-${it.text}
-<g:checkBox name="q.${it.id}"/>
+<g:checkBox name="q.${it.id}"/>${it.text}
