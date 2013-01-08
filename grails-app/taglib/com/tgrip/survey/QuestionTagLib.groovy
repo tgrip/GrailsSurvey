@@ -13,4 +13,14 @@ class QuestionTagLib {
         }
     }
 
+    def multipleChoice = { attrs ->
+        Question question = attrs.question
+        choiceService.byQuestion(question).each { choice ->
+            out << g.checkBox(name: "q.${question.id}.${choice.id}")
+            out << choice.text
+            out << '<br/>'
+        }
+
+    }
+
 }
