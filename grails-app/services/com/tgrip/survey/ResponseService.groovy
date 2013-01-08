@@ -28,6 +28,9 @@ class ResponseService {
             case QuestionType.YesNo:
                 response = new YesNoResponse(yesNoValue: userResponse)
                 break
+            case QuestionType.SingleChoice:
+                response = new SingleChoiceResponse(choice: Choice.get(userResponse))
+                break
         }
         response.survey = question.survey
         response.save()
