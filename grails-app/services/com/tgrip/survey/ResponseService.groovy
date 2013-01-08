@@ -31,6 +31,16 @@ class ResponseService {
             case QuestionType.SingleChoice:
                 response = new SingleChoiceResponse(choice: Choice.get(userResponse))
                 break
+            case QuestionType.MultipleChoice:
+                response = new MultipleChoiceResponse()
+                userResponse.each { key, ignore ->
+                    if (key.isLong())  {
+                        def choiceResponse = new ChoiceMultipleChoiceResponse(choice: Choice.get(key))
+                        choiceResponse.save()
+                        response.addToChoices(choiceResponse)
+                    }
+                }
+                break
         }
         response.survey = question.survey
         response.save()
