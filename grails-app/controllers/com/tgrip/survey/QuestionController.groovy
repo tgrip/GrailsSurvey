@@ -4,6 +4,7 @@ import org.springframework.dao.DataIntegrityViolationException
 
 class QuestionController {
     def questionService
+    def choiceService
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
@@ -29,8 +30,7 @@ class QuestionController {
             redirect(action: "list")
             return
         }
-        def choices = Choice.findAllByQuestion(questionInstance, [sort: 'id'])
-        [questionInstance: questionInstance, choiceInstanceList: choices]
+        [questionInstance: questionInstance, choiceInstanceList: choiceService.byQuestion(questionInstance)]
     }
 
     def edit(Long id) {
