@@ -18,6 +18,6 @@ class Question {
     }
 
     boolean isChoice() {
-        type == QuestionType.SingleChoice
+        type in [QuestionType.SingleChoice, QuestionType.MultipleChoice]
     }
 }

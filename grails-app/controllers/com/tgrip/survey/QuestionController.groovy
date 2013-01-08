@@ -20,7 +20,11 @@ class QuestionController {
         }
 
         flash.message = message(code: 'default.created.message', args: [message(code: 'question.label', default: 'Question'), questionInstance.id])
-        redirect(controller: 'survey', action: "show", id: questionInstance.survey.id)
+        if (questionInstance.isChoice()) {
+            redirect action: 'show', id: questionInstance.id
+        } else {
+            redirect(controller: 'survey', action: "show", id: questionInstance.survey.id)
+        }
     }
 
     def show(Long id) {

@@ -89,7 +89,7 @@
 				</g:if>
 
                 <fieldset name="questions">
-                    <g:render template="/question/list" model="[questionInstanceList: surveyInstance.questions]"/>
+                    <g:render template="/question/list" model="[questionInstanceList: surveyInstance.questions.sort {it.surveyOrder}]"/>
                     <div class="nav" role="navigation">
                         <ul>
                             <li><g:link class="create" controller="question" action="create" params="[surveyId: surveyId]">Add question</g:link></li>
