@@ -1,7 +1,9 @@
 package com.tgrip.survey
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
 
+@Secured(['ADMIN_ROLE'])
 class SurveyController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

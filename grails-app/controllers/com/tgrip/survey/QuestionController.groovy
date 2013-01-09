@@ -1,7 +1,9 @@
 package com.tgrip.survey
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
 
+@Secured(['ADMIN_ROLE'])
 class QuestionController {
     def questionService
     def choiceService
