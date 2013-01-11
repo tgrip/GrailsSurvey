@@ -5,9 +5,11 @@ import com.tgrip.survey.PersonRole
 class BootStrap {
 
     def init = { servletContext ->
-        def admin = Person.findOrCreateWhere(username: 'admin', password: '123123', enabled: true)
-        def role = new Role(authority: 'ADMIN_ROLE').save()
-        new PersonRole(person: admin, role: role).save()
+        if (Person.count) {
+            def admin = Person.findOrCreateWhere(username: 'admin', password: '123123', enabled: true).save()
+            def role = Role.findOrCreateWhere(authority: 'ADMIN_ROLE').save()
+            PersonRole.findOrCreateWhere(person: admin, role: role).save()
+        }
     }
 
     def destroy = {
