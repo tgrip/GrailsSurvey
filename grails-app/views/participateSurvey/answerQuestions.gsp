@@ -9,10 +9,11 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-  <title></title>
+  <title>Survey - Answer</title>
+  <r:require module="question"/>
 </head>
 <body>
-    <g:form action="saveResults">
+    <g:form action="saveResults" name="questionForm">
         <g:hiddenField name="surveyId" value="${survey.id}"/>
         <g:each in="${survey.questions.sort {it.surveyOrder}}" var="question">
             <g:render template="/questionType/question${question.type}" bean="${question}"/>

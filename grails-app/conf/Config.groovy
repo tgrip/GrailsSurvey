@@ -63,6 +63,7 @@ grails.hibernate.cache.queries = true
 environments {
     development {
         grails.logging.jul.usebridge = true
+        grails.serverURL = 'http://localhost:8080/GrailsSurvey'
     }
     production {
         grails.logging.jul.usebridge = false
@@ -96,3 +97,4 @@ log4j = {
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.tgrip.survey.Person'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.tgrip.survey.PersonRole'
 grails.plugins.springsecurity.authority.className = 'com.tgrip.survey.Role'
+grails.plugins.springsecurity.securityConfigType = "Annotation"
