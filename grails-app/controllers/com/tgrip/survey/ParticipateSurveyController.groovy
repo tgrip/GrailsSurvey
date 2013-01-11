@@ -29,7 +29,7 @@ class ParticipateSurveyController {
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def saveResults() {
 //        println params.q
-        responseService.saveResponses(params.q)
+        responseService.saveResponses(getAuthenticatedUser(), params.q)
         [survey: Survey.get(params.surveyId)]
     }
 }
