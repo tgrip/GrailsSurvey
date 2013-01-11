@@ -11,7 +11,7 @@ import grails.buildtestdata.mixin.Build
  */
 @TestFor(ResponseService)
 @Mock([Response, Question, TextResponse, DateResponse, YesNoResponse, SingleChoiceResponse, MultipleChoiceResponse, ChoiceMultipleChoiceResponse])
-@Build([Question, Choice])
+@Build([Question, Choice, Person])
 class ResponseServiceTests {
 
     void testSaveResponses() {
@@ -24,12 +24,16 @@ class ResponseServiceTests {
 
         def responses = ['1': 'Alice', '2._year':2013, '2':[_year:2013, _month:1, _day:6], '3':'on', '4': '1',
                 '5': [_2:'', _3: '', '2': 'on']]
-        service.saveResponses(responses)
+        def person = Person.build()
+        service.saveResponses(person, responses)
 
         assert 1 == DateResponse.count
         assert 1 == TextResponse.count
         assert 1 == SingleChoiceResponse.count
         assert 1 == MultipleChoiceResponse.count
         assert 5 == Response.count
+
+        def dateResponse = DateResponse.all.first()
+        assert person.id == dateResponse.person.id
     }
 }

@@ -4,18 +4,18 @@ import org.joda.time.LocalDate
 
 class ResponseService {
 
-    void saveResponses(Map responses) {
+    void saveResponses(Person person, Map responses) {
         responses.each { questionId, userResponse ->
             if (questionId.isLong()) {
                 def question = Question.get(questionId)
                 if(question){
-                    saveResponse(question, userResponse)
+                    saveResponse(person, question, userResponse)
                 }
             }
         }
     }
 
-    private void saveResponse(Question question, userResponse) {
+    private void saveResponse(Person person, Question question, userResponse) {
         def response
         switch (question.type) {
             case QuestionType.FreeText:
@@ -43,6 +43,7 @@ class ResponseService {
                 break
         }
         response.survey = question.survey
+        response.person = person
         response.save()
     }
 }
