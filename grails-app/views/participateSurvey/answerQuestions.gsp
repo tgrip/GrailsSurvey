@@ -10,6 +10,7 @@
 <html>
 <head>
   <title>Survey - Answer</title>
+    <meta name="layout" content="main">
   <r:require module="question"/>
 </head>
 <body>
